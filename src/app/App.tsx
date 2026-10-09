@@ -1,12 +1,11 @@
+import { AboutPageAsync } from "pages/AboutPage/ui/AboutPage.async";
+import { MainPageAsync } from "pages/MainPage/ui/MainPage.async";
 import { Suspense, useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { Route, Routes } from "react-router-dom";
+import { classNames } from "shared/lib/classNames/classNames";
+import { useTheme } from "./providers/ThemeProvider";
 import './styles/index.scss'
-import { AboutPageAsync } from "./pages/AboutPage/AboutPage.async";
-import { MainPageAsync } from "./pages/MainPage/MainPage.async";
-import { Theme, ThemeContext } from "./theme/ThemeContext";
-import { useTheme } from "./theme/useTheme";
-import { classNames } from "./helpers/classNames/classNames";
 
 export const App = () => {
     const { theme, toggleTheme } = useTheme();

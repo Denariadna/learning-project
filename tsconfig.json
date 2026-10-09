@@ -13,6 +13,11 @@
         // позволяет избавится от * as
         "allowSyntheticDefaultImports": true,
         "baseUrl": ".",
+        "paths": {
+            "*": [
+                "./src/*"
+            ]
+        }
     },
     "include": [
         "src/**/*"
