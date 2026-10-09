@@ -1,9 +1,21 @@
 .app.light {
-    --bg-color: rgb(78, 116, 135);
-    --inverted-bg-color: rgb(92, 92, 246);
+    --bg-color: #F9F3F5;
+    --inverted-bg-color: #100E1B;
+    --secondary-bg-color: #F8D3DB;
+    --card-bg-color: #E6A8B5;
 
-    --primary-color: rgb(27, 33, 99);
-    --secondary-color: rgb(60, 48, 118);
-    --inverted-primary-color: rgb(80, 187, 80);
-    --inverted-secondary-color: rgb(168, 229, 168);
+    --primary-color: #B14867;
+    --secondary-color: #D68898;
+    --inverted-primary-color: #D500A3;
+    --inverted-secondary-color: #A51C83;
+
+    --primary-text-color: #8C294B;
+    --secondary-text-color: #B14867;
+    --inverted-text-color: #FFFFFF;
+
+    --border-color: #8C294B;
+    --line-color: #C9768F;
+
+    --button-bg-color: #F8D3DB;
+    --button-text-color: #8C294B;
 }

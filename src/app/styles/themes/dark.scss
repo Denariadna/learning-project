@@ -1,9 +1,21 @@
 .app.dark {
-    --bg-color: rgb(92, 92, 246);
-    --inverted-bg-color: rgb(78, 116, 135);
+    --bg-color: #100E1B;
+    --inverted-bg-color: #F9F3F5;
+    --secondary-bg-color: #191424;
+    --card-bg-color: #44103F;
 
-    --primary-color: rgb(80, 187, 80);
-    --secondary-color: rgb(168, 229, 168);
-    --inverted-primary-color: rgb(27, 33, 99);
-    --inverted-secondary-color: rgb(60, 48, 118);
+    --primary-color: #D500A3;
+    --secondary-color: #A51C83;
+    --inverted-primary-color: #B14867;
+    --inverted-secondary-color: #D68898;
+
+    --primary-text-color: #F1EAF3;
+    --secondary-text-color: #C9A5C8;
+    --inverted-text-color: #FFFFFF;
+
+    --border-color: #63315E;
+    --line-color: #C00098;
+
+    --button-bg-color: #D500A3;
+    --button-text-color: #FFFFFF;
 }
