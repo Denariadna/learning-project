@@ -10,7 +10,9 @@ export const AppRouter = () => {
                     key={path}
                     element={
                         <Suspense fallback={<div>Loading...</div>}>
-                            {element}
+                            <div className="page-wrapper">
+                                {element}
+                            </div>
                         </Suspense>
                     }
                     path={path}
