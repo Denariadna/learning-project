@@ -20,14 +20,15 @@
         }
     },
     "include": [
-        "src/**/*"
+        "src/**/*",
+        "./config/jest/setupTest.ts"
     ],
     "exclude": [
-        "node_modules"
+        "node_modules",
     ],
     "ts-node": {
         "compilerOptions": {
             "module": "commonjs"
         }
-    }
+    },
 }
