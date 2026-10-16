@@ -5,7 +5,7 @@ interface LoaderProps {
     className?: string;
 }
 
-export const Loader = ({ className }: LoaderProps) => (
+export const Loader = ({ className = '' }: LoaderProps) => (
     <div className={classNames('lds-heart', {}, [className])}>
         <div />
     </div>
