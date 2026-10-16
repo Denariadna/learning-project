@@ -38,7 +38,7 @@ module.exports = {
         'react/jsx-props-no-spreading': 'off',
         'import/no-extraneous-dependencies': 'off',
         'no-underscore-dangle': 'off',
-        'i18next/no-literal-string': ['warn', {
+        'i18next/no-literal-string': ['error', {
             markupOnly: true,
             ignoreAttribute: ['data-testid', 'to', 'viewBox'],
         }],

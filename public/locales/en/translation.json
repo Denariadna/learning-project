@@ -5,5 +5,8 @@
     "Страница не найдена": "Page Not Found",
     "Произошла непредвиденная ошибка": "Unexpected Error",
     "Обновить страницу": "Reload Page",
-    "throw Error": "throw Error"
+    "throw Error": "throw Error",
+    "Главная": "Main",
+    "О сайте": "About",
+    "Переключить":"toggle"
 }
