@@ -8,5 +8,6 @@
     "throw Error": "throw Error",
     "Главная": "Main",
     "О сайте": "About",
-    "Переключить":"toggle"
+    "Переключить":"toggle",
+    "Короткий язык":"En"
 }
