@@ -14,6 +14,7 @@
     "test:unit": "jest --config ./config/jest/jest.config.ts",
     "test:ui": "npx loki test",
     "test:ui:ok": "npx loki approve",
+    "test:ui:update": "npx loki update --chromeDockerWithoutSeccomp --chromeFlags=\"--headless --disable-gpu --hide-scrollbars --no-sandbox\"",
     "test:ui:json": "node scripts/generate-visual-json-report.js",
     "test:ui:html": "npx reg-cli --from .loki/report.json --report .loki/report.html",
     "test:ui:report": "npm run test:ui:json && npm run test:ui:html",
@@ -89,7 +90,7 @@
     "webpack-dev-server": "^4.7.4"
   },
   "dependencies": {
-    "@reduxjs/toolkit": "^1.8.0",
+    "@reduxjs/toolkit": "^1.9.7",
     "axios": "^0.26.1",
     "concurrently": "^7.0.0",
     "i18next": "^21.6.11",
@@ -98,7 +99,7 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-i18next": "^11.15.5",
-    "react-redux": "^7.2.6",
+    "react-redux": "^7.2.9",
     "react-router-dom": "^6.2.1"
   },
   "loki": {
