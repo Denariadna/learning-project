@@ -1,5 +1,7 @@
-import { loginByUsername } from 'features/AuthByUsername';
 import { getLoginState } from 'features/AuthByUsername/model/selectors/getLoginState/getLoginState';
+import {
+    loginByUsername,
+} from 'features/AuthByUsername/model/services/loginByUsername/loginByUsername';
 import { loginActions } from 'features/AuthByUsername/model/slice/loginSlice';
 import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -25,12 +27,11 @@ export const LoginForm = memo(({ className = '' }: LoginFormProps) => {
         dispatch(loginActions.setPassword(value));
     }, [dispatch]);
     const {
-        username, password, isLodaing, error,
+        username, password, isLoading, error,
     } = useSelector(getLoginState);
     const onLoginClick = useCallback(() => {
         dispatch(loginByUsername({ username, password }));
     }, [dispatch, password, username]);
-
     return (
         <div className={classNames(cls.LoginForm, {}, [className])}>
             <Text
@@ -38,7 +39,7 @@ export const LoginForm = memo(({ className = '' }: LoginFormProps) => {
             />
             {error && (
                 <Text
-                    text={error}
+                    text={t('Произошла ошибка при авторизации')}
                     theme={TextTheme.ERROR}
                 />
             )}
@@ -61,7 +62,7 @@ export const LoginForm = memo(({ className = '' }: LoginFormProps) => {
                 className={cls.loginBtn}
                 theme={ButtonTheme.OUTLINE}
                 onClick={onLoginClick}
-                disabled={isLodaing}
+                disabled={isLoading}
             >
                 {t('Войти')}
             </Button>

@@ -27,8 +27,7 @@ export const loginByUsername = createAsyncThunk<
             return response.data;
         } catch (e) {
             console.log(e);
-
-            return thunkAPI.rejectWithValue('Произошла ошибка при авторизации');
+            return thunkAPI.rejectWithValue('error');
         }
     },
 );

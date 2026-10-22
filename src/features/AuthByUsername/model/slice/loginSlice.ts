@@ -3,7 +3,7 @@ import { loginByUsername } from '../services/loginByUsername/loginByUsername';
 import { LoginSchema } from '../types/loginSchema';
 
 const initialState: LoginSchema = {
-    isLodaing: false,
+    isLoading: false,
     password: '',
     username: '',
 };
@@ -23,13 +23,13 @@ export const loginSlice = createSlice({
         builder
             .addCase(loginByUsername.pending, (state) => {
                 state.error = undefined;
-                state.isLodaing = true;
+                state.isLoading = true;
             })
             .addCase(loginByUsername.fulfilled, (state) => {
-                state.isLodaing = false;
+                state.isLoading = false;
             })
             .addCase(loginByUsername.rejected, (state, action) => {
-                state.isLodaing = false;
+                state.isLoading = false;
                 state.error = typeof action.payload === 'string'
                     ? action.payload
                     : action.error.message;
