@@ -45,7 +45,9 @@ const LoginForm = memo(({ className = '' }: LoginFormProps) => {
         store.reducerManager.add('loginForm', loginReducer);
         dispatch({ type: '@INIT login form' });
         return () => {
+            dispatch({ type: '@exit login form' });
             store.reducerManager.remove('loginForm');
+            dispatch({ type: '@REMOVE login form' });
         };
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
