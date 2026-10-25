@@ -29,6 +29,7 @@ withError.decorators = [StoreDecorator({
         username: '123',
         password: 'asd',
         isLoading: false,
+        error: 'ERROR',
     },
 })];
 
