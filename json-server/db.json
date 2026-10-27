@@ -24,7 +24,14 @@
     }
   ],
   "profile": {
-    "name": "typicode"
+    "first": "Арина",
+    "lastname": "Денисова",
+    "age": "21",
+    "currency": "RUB",
+    "country": "Russia",
+    "city": "Moscow",
+    "username": "admin",
+    "avatar": "https://avatars.mds.yandex.net/i?id=5f46ab2e1d333acf68685fa2205f2662_l-8456088-images-thumbs&n=13"
   },
   "users": [
     {
