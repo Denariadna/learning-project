@@ -21,6 +21,7 @@ export default (env: BuildEnv) => {
         paths,
         isDev,
         port: PORT,
+        apiUrl: 'http://localhost:8000',
     });
 
     return config;
