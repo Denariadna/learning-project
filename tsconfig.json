@@ -12,6 +12,7 @@
         "esModuleInterop": true,
         // позволяет избавится от * as
         "allowSyntheticDefaultImports": true,
+        // "strict": true,
         "baseUrl": ".",
         "paths": {
             "*": [
