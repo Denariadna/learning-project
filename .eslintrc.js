@@ -32,7 +32,6 @@ module.exports = {
         'linebreak-style': 'off',
         'react/react-in-jsx-scope': 'off',
         indent: [2, 4],
-        'no-unused-vars': 'warn',
         'react/require-default-props': 'off',
         'react/function-component-definition': 'off',
         'react/jsx-indent-props': [2, 4],
@@ -50,6 +49,15 @@ module.exports = {
         'react-hooks/rules-of-hooks': 'error',
         'react-hooks/exhaustive-deps': 'error',
         'no-param-reassign': 'off',
+        'no-unused-vars': 'off',
+        '@typescript-eslint/no-unused-vars': [
+            'warn',
+            {
+                argsIgnorePattern: '^_',
+                varsIgnorePattern: '^_',
+            },
+        ],
+        'no-undef': 'off',
     },
     globals: {
         __IS_DEV__: true,

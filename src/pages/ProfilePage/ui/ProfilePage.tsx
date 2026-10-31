@@ -1,6 +1,5 @@
 import { fetchProfileData, ProfileCard, profileReducer } from 'entities/Profile';
 import { useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
 import {
     DynamicModuleLoader,
     ReducersList,

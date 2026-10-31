@@ -2,7 +2,7 @@ import { useTheme } from 'app/providers/ThemeProvider';
 import React, {
     ReactNode, useCallback, useEffect, useRef, useState,
 } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
+import { classNames, Modes } from 'shared/lib/classNames/classNames';
 import { Portal } from '../Portal/Portal';
 import cls from './Modal.module.scss';
 
@@ -18,11 +18,11 @@ const ANIMATION_DELAY = 300;
 
 export const Modal = (props: ModalProps) => {
     const {
-        className = '',
+        className,
         children,
-        isOpen = false,
+        isOpen,
         onClose,
-        lazy = true,
+        lazy,
     } = props;
     const { theme } = useTheme();
     const [isClosing, setIsClosing] = useState<boolean>(false);
@@ -65,7 +65,7 @@ export const Modal = (props: ModalProps) => {
         e.stopPropagation();
     };
 
-    const mods: Record<string, boolean> = {
+    const mods: Modes = {
         [cls.opened]: isOpen,
         [cls.isClosing]: isClosing,
     };

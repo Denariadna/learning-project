@@ -37,8 +37,6 @@ export const Loading = Template.bind({});
 Loading.args = {};
 Loading.decorators = [StoreDecorator({
     loginForm: {
-        username: '',
-        password: '',
         isLoading: true,
     },
 })];

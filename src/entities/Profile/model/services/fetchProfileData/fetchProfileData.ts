@@ -9,7 +9,7 @@ export const fetchProfileData = createAsyncThunk<
 >(
     'profile/fetchProfileData',
     async (_, thunkAPI) => {
-        const { extra, dispatch, rejectWithValue } = thunkAPI;
+        const { extra, rejectWithValue } = thunkAPI;
         try {
             const response = await extra.api.get<Profile>(
                 '/profile',
