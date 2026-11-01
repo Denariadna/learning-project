@@ -1,17 +1,20 @@
-import { current } from '@reduxjs/toolkit';
 import React, {
-    InputHTMLAttributes, memo, useEffect, useRef, useState,
+    InputHTMLAttributes, useEffect, useRef, useState,
 } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
+import { classNames, Mods } from 'shared/lib/classNames/classNames';
 import cls from './Input.module.scss';
 
-type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange'>
+type HTMLInputProps = Omit<InputHTMLAttributes<
+HTMLInputElement
+>, 'value' | 'onChange' | 'readonly'
+>
 
 interface InputProps extends HTMLInputProps {
     className?: string;
-    value?: string;
+    value?: string | number;
     onChange?: (value: string) => void
     autoFocus?: boolean
+    readonly?: boolean
 }
 
 export const Input = ((props: InputProps) => {
@@ -22,16 +25,20 @@ export const Input = ((props: InputProps) => {
         type = 'text',
         placeholder,
         autoFocus,
+        readonly,
         ...otherProps
     } = props;
     const [caretPosition, setCaretPosition] = useState<number>(0);
+    const [isFocused, setIsFocused] = useState<boolean>(false);
+
+    const isCaretVisible = isFocused && !readonly;
+
     const ref = useRef<HTMLInputElement>(null);
     const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         onChange?.(e.target.value);
         setCaretPosition(e.target.value.length);
     };
 
-    const [isFocused, setIsFocused] = useState<boolean>(false);
     const onBlur = () => {
         setIsFocused(false);
     };
@@ -51,8 +58,12 @@ export const Input = ((props: InputProps) => {
         }
     }, [autoFocus]);
 
+    const mods: Mods = {
+        [cls.readonly]: readonly,
+    };
+
     return (
-        <div className={classNames(cls.InputWrapper, {}, [className])}>
+        <div className={classNames(cls.InputWrapper, mods, [className])}>
             {placeholder && (
                 <div className={cls.placeholder}>
                     {`${placeholder} >`}
@@ -68,9 +79,10 @@ export const Input = ((props: InputProps) => {
                     onBlur={onBlur}
                     onFocus={onFocus}
                     onSelect={onSelect}
+                    readOnly={readonly}
                     {...otherProps}
                 />
-                {isFocused && (
+                {isFocused && isCaretVisible && (
                     <span
                         className={cls.caret}
                         style={{ left: `${caretPosition * 9}px` }}
