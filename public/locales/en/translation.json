@@ -13,5 +13,7 @@
   "Введите username": "Text username",
   "Введите пароль": "Text password",
   "Форма авторизации": "Auth Form",
-  "Профиль": "Profile"
+  "Профиль": "Profile",
+  "Укажите валюту": "Your currency",
+  "Укажите страну": "Your country"
 }

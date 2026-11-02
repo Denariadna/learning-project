@@ -1,3 +1,5 @@
+import { Country } from 'entities/Country/model/types/country';
+import { Currency } from 'entities/Currency';
 import {
     fetchProfileData,
     getProfileError,
@@ -51,6 +53,26 @@ const ProfilePage = () => {
             age: Number(value) || 0,
         }));
     }, [dispatch]);
+    const onChangeUsername = useCallback((value: string) => {
+        dispatch(profileActions.updateProfile({
+            username: value || '',
+        }));
+    }, [dispatch]);
+    const onChangeAvatar = useCallback((value: string) => {
+        dispatch(profileActions.updateProfile({
+            avatar: value || '',
+        }));
+    }, [dispatch]);
+    const onChangeCountry = useCallback((value: Country) => {
+        dispatch(profileActions.updateProfile({
+            country: value || '',
+        }));
+    }, [dispatch]);
+    const onChangeCurrency = useCallback((value: Currency) => {
+        dispatch(profileActions.updateProfile({
+            currency: value || 'RUB',
+        }));
+    }, [dispatch]);
 
     return (
         <DynamicModuleLoader
@@ -66,7 +88,11 @@ const ProfilePage = () => {
                 onChangeLastName={onChangeLastName}
                 onChangeCity={onChangeCity}
                 onChangeAge={onChangeAge}
+                onChangeUsername={onChangeUsername}
+                onChangeAvatar={onChangeAvatar}
                 readonly={readonly}
+                onChangeCountry={onChangeCountry}
+                onChangeCurrency={onChangeCurrency}
             />
         </DynamicModuleLoader>
     );
