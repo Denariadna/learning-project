@@ -20,6 +20,9 @@ export const updateProfileData = createAsyncThunk<
                 '/profile',
                 formData,
             );
+            if (!response.data) {
+                throw new Error();
+            }
             return response.data;
         } catch (e) {
             console.log(e);
