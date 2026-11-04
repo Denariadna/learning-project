@@ -50,7 +50,7 @@ export const profileSlice = createSlice({
                     : action.error.message;
             })
             .addCase(updateProfileData.pending, (state) => {
-                state.error = undefined;
+                state.validateError = undefined;
                 state.isLoading = true;
             })
             .addCase(updateProfileData.fulfilled, (
