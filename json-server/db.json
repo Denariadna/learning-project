@@ -147,16 +147,30 @@
       ]
     }
   ],
-  "profile": {
-    "first": "Arina",
-    "lastname": "Denisova",
-    "age": 20,
-    "currency": "EUR",
-    "country": "Kazahstan",
-    "city": "Moscow",
-    "username": "admin",
-    "avatar": "https://avatars.mds.yandex.net/i?id=5f46ab2e1d333acf68685fa2205f2662_l-8456088-images-thumbs&n=13"
-  },
+  "profile": [
+    {
+      "id": "1",
+      "first": "Arina",
+      "lastname": "Denisova",
+      "age": 20,
+      "currency": "EUR",
+      "country": "Kazahstan",
+      "city": "Moscow",
+      "username": "admin",
+      "avatar": "https://avatars.mds.yandex.net/i?id=5f46ab2e1d333acf68685fa2205f2662_l-8456088-images-thumbs&n=13"
+    },
+    {
+      "id": "2",
+      "first": "Пользователь",
+      "lastname": "Пользовавич",
+      "age": 30,
+      "currency": "EUR",
+      "country": "Kazahstan",
+      "city": "Moscow",
+      "username": "user",
+      "avatar": "https://img.magnific.com/premium-photo/silhouette-hacker-hood-with-binary-code-luminous-green-background_1197797-213223.jpg"
+    }
+  ],
   "users": [
     {
       "id": "1",

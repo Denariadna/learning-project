@@ -13,7 +13,7 @@ import {
     profileReducer,
     ValidateProfileError,
 } from 'entities/Profile';
-import { useCallback, useEffect } from 'react';
+import { useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import {
     DynamicModuleLoader,
@@ -22,6 +22,10 @@ import {
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { TextTheme } from 'shared/ui/Text/Text';
 import { useTranslation } from 'react-i18next';
+import {
+    useInitialEffect,
+} from 'shared/lib/hooks/useAppDispatch/useInitialEffect/useInitialEffect';
+import { useParams } from 'react-router-dom';
 import { ProfilePageHeader } from './ProfilePageHeader';
 
 const reducers: ReducersList = {
@@ -30,6 +34,7 @@ const reducers: ReducersList = {
 const ProfilePage = () => {
     const dispatch = useAppDispatch();
     const form = useSelector(getProfileForm);
+    const { id } = useParams<{id: string}>();
     const error = useSelector(getProfileError);
     const isLoading = useSelector(getProfileIsLoading);
     const readonly = useSelector(getProfileReadonly);
@@ -43,11 +48,9 @@ const ProfilePage = () => {
         [ValidateProfileError.NO_DATA]: t('Данные не указаны'),
     };
 
-    useEffect(() => {
-        if (__PROJECT__ !== 'storybook') {
-            dispatch(fetchProfileData());
-        }
-    }, [dispatch]);
+    useInitialEffect(() => {
+        if (id) dispatch(fetchProfileData(id));
+    });
 
     const onChangeFirstName = useCallback((value: string) => {
         dispatch(profileActions.updateProfile({
