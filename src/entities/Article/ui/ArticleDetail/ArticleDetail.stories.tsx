@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Theme } from 'app/providers/ThemeProvider';
-import { ActicleType, Article, ArticleBlockType } from 'entities/Article/model/types/article';
+import { ArticleType, Article, ArticleBlockType } from 'entities/Article/model/types/article';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { ArticleDetail } from './ArticleDetail';
@@ -13,8 +13,8 @@ const article: Article = {
     img: '',
     createdAt: '26/06/2026',
     type: [
-        ActicleType.IT,
-        ActicleType.ECONOMICS,
+        ArticleType.IT,
+        ArticleType.ECONOMICS,
     ],
     blocks: [
         {

@@ -23,6 +23,18 @@
       "text": "another comment about post 1",
       "articleId": "1",
       "userId": "2"
+    },
+    {
+      "articleId": "1",
+      "userId": "1",
+      "text": "123",
+      "id": "xLtTH-x"
+    },
+    {
+      "articleId": "1",
+      "userId": "1",
+      "text": "hahahah",
+      "id": "37LpD4p"
     }
   ],
   "articles": [
@@ -81,7 +93,7 @@
         {
           "id": "6",
           "type": "CODE",
-          "code": "<!DOCTYPE html>\n<html>\n  <body>\n    <p id=\"hello\"></p>\n    <script>\n      document.getElementById(\"hello\").innerHTML = \"Hello, world!\";\n    <\/script>\n  </body>\n</html>"
+          "code": "<!DOCTYPE html>\n<html>\n  <body>\n    <p id=\"hello\"></p>\n    <script>\n      document.getElementById(\"hello\").innerHTML = \"Hello, world!\";\n    </script>\n  </body>\n</html>"
         },
         {
           "id": "7",
@@ -126,7 +138,7 @@
         {
           "id": "12",
           "type": "CODE",
-          "code": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Моя первая страница</title>\n    <style>\n      #hello {\n        color: #007bff;\n        font-size: 24px;\n        font-family: sans-serif;\n        text-align: center;\n        margin-top: 50px;\n      }\n    <\/style>\n  <\/head>\n  <body>\n    <p id=\"hello\"></p>\n    <script>\n      document.getElementById(\"hello\").innerHTML = \"Hello, world!\";\n    <\/script>\n  </body>\n</html>"
+          "code": "<!DOCTYPE html>\n<html>\n  <head>\n    <title>Моя первая страница</title>\n    <style>\n      #hello {\n        color: #007bff;\n        font-size: 24px;\n        font-family: sans-serif;\n        text-align: center;\n        margin-top: 50px;\n      }\n    </style>\n  </head>\n  <body>\n    <p id=\"hello\"></p>\n    <script>\n      document.getElementById(\"hello\").innerHTML = \"Hello, world!\";\n    </script>\n  </body>\n</html>"
         },
         {
           "id": "13",
@@ -150,7 +162,7 @@
   "profile": [
     {
       "id": "1",
-      "first": "Arina",
+      "first": "Арина",
       "lastname": "Denisova",
       "age": 20,
       "currency": "EUR",

@@ -28,7 +28,7 @@ export interface ArticleImageBlock extends ArticleBlockBase {
 
 export type ArticleBlock = ArticleCodeBlock | ArticleTextBlock | ArticleImageBlock
 
-export enum ActicleType {
+export enum ArticleType {
     IT = 'IT',
     SCIENCE = 'SCIENCE',
     ECONOMICS = 'ECONOMICS'
@@ -41,6 +41,6 @@ export interface Article {
     img: string;
     views: number;
     createdAt: string;
-    type: ActicleType[];
+    type: ArticleType[];
     blocks: ArticleBlock[];
 }

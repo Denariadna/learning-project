@@ -1,5 +1,5 @@
 import { StateSchema } from 'app/providers/StoreProvider';
-import { Article, ActicleType, ArticleBlockType } from '../types/article';
+import { Article, ArticleType, ArticleBlockType } from '../types/article';
 import { getArticleDetailData, getArticleDetailError, getArticleDetailIsLoading } from './articleDetail';
 
 describe('getArticleDetailData', () => {
@@ -12,8 +12,8 @@ describe('getArticleDetailData', () => {
             views: 1022,
             createdAt: '26/06/2026',
             type: [
-                ActicleType.IT,
-                ActicleType.ECONOMICS,
+                ArticleType.IT,
+                ArticleType.ECONOMICS,
             ],
             blocks: [
                 {
