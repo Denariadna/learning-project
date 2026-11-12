@@ -13,7 +13,7 @@ import {
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import {
     useInitialEffect,
-} from 'shared/lib/hooks/useAppDispatch/useInitialEffect/useInitialEffect';
+} from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { Text } from 'shared/ui/Text';
 import { getArticleCommentsIsLoading } from '../model/selectors/comments';
 import {

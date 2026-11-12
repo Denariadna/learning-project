@@ -24,7 +24,7 @@ import { TextTheme } from 'shared/ui/Text/Text';
 import { useTranslation } from 'react-i18next';
 import {
     useInitialEffect,
-} from 'shared/lib/hooks/useAppDispatch/useInitialEffect/useInitialEffect';
+} from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { useParams } from 'react-router-dom';
 import { ProfilePageHeader } from './ProfilePageHeader';
 

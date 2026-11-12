@@ -7,6 +7,11 @@ import { ArticleDetail } from './ArticleDetail';
 
 const article: Article = {
     id: '1',
+    user: {
+        id: '1',
+        username: 'test',
+        avatar: 'https://static.vecteezy.com/system/resources/previews/027/127/463/non_2x/javascript-logo-javascript-icon-transparent-free-png.png',
+    },
     title: 'Javascript news',
     subtitle: 'Что нового в js за 2026',
     views: 1022,

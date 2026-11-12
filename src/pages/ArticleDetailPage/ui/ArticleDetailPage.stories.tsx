@@ -18,6 +18,11 @@ const Template: ComponentStory<typeof ArticleDetailsPage> = (args) => <ArticleDe
 
 const article: Article = {
     id: '1',
+    user: {
+        id: '1',
+        username: 'test',
+        avatar: 'https://static.vecteezy.com/system/resources/previews/027/127/463/non_2x/javascript-logo-javascript-icon-transparent-free-png.png',
+    },
     title: 'Javascript news',
     subtitle: 'Что нового в JS за 2022 год?',
     img: 'https://teknotower.com/wp-content/uploads/2020/11/js.png',
