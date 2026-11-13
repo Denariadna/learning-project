@@ -143,6 +143,7 @@ const ArticlesPage = (props: ArticlesPageProps) => {
     return (
         <div className={classNames(cls.ArticlesPage, {}, [className])}>
             <ArticleList
+                isLoading
                 view={ArticleView.BIG}
                 articles={
                     new Array(16).fill(0).map((item, i) => ({

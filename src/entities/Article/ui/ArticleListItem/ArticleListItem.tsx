@@ -6,6 +6,9 @@ import View from 'shared/assets/icons/visibility.svg';
 import { Avatar } from 'shared/ui/Avatar';
 import { Button } from 'shared/ui/Button/ui/Button';
 import { useTranslation } from 'react-i18next';
+import { useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import {
     Article, ArticleBlockType, ArticleTextBlock, ArticleView,
 } from '../../model/types/article';
@@ -30,8 +33,11 @@ export const ArticleListItem = (props: ArticleListItemProps) => {
             className={cls.types}
         />
     );
+    const navigate = useNavigate();
     const { t } = useTranslation('article-detail');
-
+    const onOpenArticle = useCallback(() => {
+        navigate(RoutePath.article_detail + article.id);
+    }, [article.id, navigate]);
     const views = (
         <>
             <Text
@@ -74,7 +80,9 @@ export const ArticleListItem = (props: ArticleListItemProps) => {
                     <div
                         className={cls.footer}
                     >
-                        <Button>
+                        <Button
+                            onClick={onOpenArticle}
+                        >
                             {t('Читать далее...')}
                         </Button>
                         {views}
@@ -85,7 +93,7 @@ export const ArticleListItem = (props: ArticleListItemProps) => {
     }
     return (
         <div className={classNames('', {}, [className, cls[view]])}>
-            <Card className={cls.card}>
+            <Card className={cls.card} onClick={onOpenArticle}>
                 <div className={cls.imageWrapper}>
                     <img
                         src={article.img}

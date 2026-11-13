@@ -4,7 +4,8 @@ import { AddCommentForm } from 'features/addCommentForm';
 import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { classNames } from 'shared/lib/classNames/classNames';
 import {
     DynamicModuleLoader,
@@ -14,6 +15,7 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import {
     useInitialEffect,
 } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
+import { Button } from 'shared/ui/Button/ui/Button';
 import { Text } from 'shared/ui/Text';
 import { getArticleCommentsIsLoading } from '../model/selectors/comments';
 import {
@@ -43,6 +45,12 @@ const ArticleDetailPage = memo((props: ArticleDetailPageProps) => {
     const comments = useSelector(getArticleComments.selectAll);
     const isLoading = useSelector(getArticleCommentsIsLoading);
     const dispatch = useAppDispatch();
+    const navigate = useNavigate();
+
+    const onBackToList = useCallback(() => {
+        navigate(RoutePath.articles);
+    }, [navigate]);
+
     useInitialEffect(() => {
         dispatch(fetchCommentsByArticleId(id));
     });
@@ -57,10 +65,14 @@ const ArticleDetailPage = memo((props: ArticleDetailPageProps) => {
             </div>
         );
     }
-
     return (
         <DynamicModuleLoader reducers={reducerList} removeAfterUnmout>
             <div className={classNames(cls.ArticleDetailPage, {}, [className])}>
+                <Button
+                    onClick={onBackToList}
+                >
+                    {t('Назад к списку')}
+                </Button>
                 <ArticleDetail id={id} />
                 <Text
                     className={cls.commentTitle}
