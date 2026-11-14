@@ -107,7 +107,7 @@ export const ArticleListItem = (props: ArticleListItemProps) => {
                 </div>
                 <div className={cls.info}>
                     {types}
-                    {view}
+                    {views}
                 </div>
                 <Text
                     text={article.title}
