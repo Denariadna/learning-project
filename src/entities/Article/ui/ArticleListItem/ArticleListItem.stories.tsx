@@ -8,7 +8,7 @@ import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDeco
 import { ArticleListItem } from './ArticleListItem';
 
 export default {
-    title: 'entity/article/ArticleListItem',
+    title: 'entity/Article/ArticleListItem',
     component: ArticleListItem,
     argTypes: {
         backgroundColor: { control: 'color' },
