@@ -16,6 +16,7 @@ import {
     useInitialEffect,
 } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { Button } from 'shared/ui/Button/ui/Button';
+import { Page } from 'shared/ui/Page';
 import { Text } from 'shared/ui/Text';
 import { getArticleCommentsIsLoading } from '../model/selectors/comments';
 import {
@@ -67,7 +68,7 @@ const ArticleDetailPage = memo((props: ArticleDetailPageProps) => {
     }
     return (
         <DynamicModuleLoader reducers={reducerList} removeAfterUnmout>
-            <div className={classNames(cls.ArticleDetailPage, {}, [className])}>
+            <Page className={classNames(cls.ArticleDetailPage, {}, [className])}>
                 <Button
                     onClick={onBackToList}
                 >
@@ -85,7 +86,7 @@ const ArticleDetailPage = memo((props: ArticleDetailPageProps) => {
                     isLoading={isLoading}
                     comments={comments}
                 />
-            </div>
+            </Page>
         </DynamicModuleLoader>
     );
 });

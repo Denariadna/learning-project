@@ -26,6 +26,8 @@ import {
     useInitialEffect,
 } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { useParams } from 'react-router-dom';
+import { Page } from 'shared/ui/Page';
+import { classNames } from 'shared/lib/classNames/classNames';
 import { ProfilePageHeader } from './ProfilePageHeader';
 
 const reducers: ReducersList = {
@@ -99,28 +101,30 @@ const ProfilePage = () => {
             removeAfterUnmout
             reducers={reducers}
         >
-            <ProfilePageHeader />
-            {validateErrors?.length && validateErrors.map((err) => (
-                <Text
-                    key={err}
-                    theme={TextTheme.ERROR}
-                    text={validateErrorTraslates[err]}
+            <Page className={classNames('', {}, [])}>
+                <ProfilePageHeader />
+                {validateErrors?.length && validateErrors.map((err) => (
+                    <Text
+                        key={err}
+                        theme={TextTheme.ERROR}
+                        text={validateErrorTraslates[err]}
+                    />
+                ))}
+                <ProfileCard
+                    data={form}
+                    isLoading={isLoading}
+                    error={error}
+                    onChangeFirstName={onChangeFirstName}
+                    onChangeLastName={onChangeLastName}
+                    onChangeCity={onChangeCity}
+                    onChangeAge={onChangeAge}
+                    onChangeUsername={onChangeUsername}
+                    onChangeAvatar={onChangeAvatar}
+                    readonly={readonly}
+                    onChangeCountry={onChangeCountry}
+                    onChangeCurrency={onChangeCurrency}
                 />
-            ))}
-            <ProfileCard
-                data={form}
-                isLoading={isLoading}
-                error={error}
-                onChangeFirstName={onChangeFirstName}
-                onChangeLastName={onChangeLastName}
-                onChangeCity={onChangeCity}
-                onChangeAge={onChangeAge}
-                onChangeUsername={onChangeUsername}
-                onChangeAvatar={onChangeAvatar}
-                readonly={readonly}
-                onChangeCountry={onChangeCountry}
-                onChangeCurrency={onChangeCurrency}
-            />
+            </Page>
         </DynamicModuleLoader>
     );
 };

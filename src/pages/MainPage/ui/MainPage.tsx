@@ -3,6 +3,7 @@ import { Counter } from 'entities/Counter';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Input } from 'shared/ui/Input';
+import { Page } from 'shared/ui/Page';
 
 const MainPage = () => {
     const { t } = useTranslation('main');
@@ -11,7 +12,7 @@ const MainPage = () => {
         setValue(val);
     };
     return (
-        <div>
+        <Page>
             <Counter />
             <BugButton />
             {t('Главная страница')}
@@ -20,7 +21,7 @@ const MainPage = () => {
                 value={value}
                 onChange={onChange}
             />
-        </div>
+        </Page>
     );
 };
 
