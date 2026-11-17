@@ -10,8 +10,8 @@ import { Page } from 'shared/ui/Page';
 import {
     getArticlesPageError, getArticlesPageIsLoading, getArticlesPageView,
 } from '../model/selectors/articlesPageSelectors';
-import { fetchArticlesList } from '../model/services/fetchArticlesList/fetchArticlesList';
 import { fetchNextArticlePage } from '../model/services/fetchNextArticlePage/fetchNextArticlePage';
+import { initArticlesPage } from '../model/services/initArticlesPage/initArticlesPage';
 import { acticlesPageReducer, ArticlePageActions, getArticles } from '../model/slices/articlesPageSlice';
 import cls from './ArticlesPage.module.scss';
 
@@ -39,15 +39,11 @@ const ArticlesPage = (props: ArticlesPageProps) => {
     }, [dispatch]);
 
     useInitialEffect(() => {
-        dispatch(ArticlePageActions.initState());
-
-        dispatch(fetchArticlesList({
-            page: 1,
-        }));
+        dispatch(initArticlesPage());
     });
 
     return (
-        <DynamicModuleLoader reducers={reducers} removeAfterUnmout>
+        <DynamicModuleLoader reducers={reducers} removeAfterUnmout={false}>
             <Page
                 onScrollEnd={onLoadNextPart}
                 className={classNames(cls.ArticlesPage, {}, [className])}
