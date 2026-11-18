@@ -26,7 +26,7 @@ import {
     useInitialEffect,
 } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { useParams } from 'react-router-dom';
-import { Page } from 'shared/ui/Page';
+import { Page } from 'widgets/Page';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { ProfilePageHeader } from './ProfilePageHeader';
 

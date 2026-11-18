@@ -16,7 +16,7 @@ import {
     useInitialEffect,
 } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { Button } from 'shared/ui/Button/ui/Button';
-import { Page } from 'shared/ui/Page';
+import { Page } from 'widgets/Page';
 import { Text } from 'shared/ui/Text';
 import { getArticleCommentsIsLoading } from '../model/selectors/comments';
 import {
