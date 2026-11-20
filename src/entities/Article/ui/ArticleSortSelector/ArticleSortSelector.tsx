@@ -1,18 +1,76 @@
-import { memo } from 'react';
+import { ArticleSortField } from 'entities/Article/model/types/article';
+import { memo, useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
+import { classNames } from 'shared/lib/classNames/classNames';
+import { SortOrder } from 'shared/types';
+import { Select } from 'shared/ui/Select';
+import { SelectOption } from 'shared/ui/Select/Select';
 import cls from './ArticleSortSelector.module.scss';
 
 interface ArticleSortSelectorProps {
     className?: string;
+    sort: ArticleSortField;
+    order: SortOrder;
+    onChangeOrder: (newOrder: SortOrder) => void;
+    onChangeSort: (newSort: ArticleSortField) => void
 }
 
 export const ArticleSortSelector = memo((props: ArticleSortSelectorProps) => {
-    const { className } = props;
-    const { t } = useTranslation();
+    const {
+        className,
+        onChangeOrder,
+        onChangeSort,
+        order,
+        sort,
+    } = props;
+    const { t } = useTranslation('article-detail');
+    const orderOptions = useMemo<SelectOption[]>(() => [
+        {
+            value: 'asc',
+            content: t('По возрастанию'),
+        },
+        {
+            value: 'desc',
+            content: t('По убыванию'),
+        },
+    ], [t]);
+    const sortOptions = useMemo<SelectOption[]>(() => [
+        {
+            value: ArticleSortField.CREATED,
+            content: t('Дата создания'),
+        },
+        {
+            value: ArticleSortField.TITLE,
+            content: t('Название'),
+        },
+        {
+            value: ArticleSortField.VIEW,
+            content: t('Количество просмотров'),
+        },
+    ], [t]);
+
+    const changeSortHandler = useCallback((newSort: string) => {
+        onChangeSort(newSort as ArticleSortField);
+    }, [onChangeSort]);
+
+    const changeOrderHandler = useCallback((newOrder: string) => {
+        onChangeOrder(newOrder as SortOrder);
+    }, [onChangeOrder]);
 
     return (
-        <div className={[cls.root, className].filter(Boolean).join(' ')}>
-            {t('ArticleSortSelector')}
+        <div className={classNames(cls.ArticleSortSelector, {}, [className])}>
+            <Select
+                label={t('Сортировка')}
+                options={sortOptions}
+                onChange={changeSortHandler}
+                value={sort}
+            />
+            <Select
+                label={t('по')}
+                options={orderOptions}
+                value={order}
+                onChange={changeOrderHandler}
+            />
         </div>
     );
 });

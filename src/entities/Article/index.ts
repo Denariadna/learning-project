@@ -4,11 +4,15 @@ export {
 export {
     Article,
     ArticleView,
+    ArticleSortField,
 } from './model/types/article';
 
 export {
     ArticleList,
 } from './ui/ArticleList/ArticleList';
+export {
+    ArticleSortSelector,
+} from './ui/ArticleSortSelector/ArticleSortSelector';
 export {
     ArticleViewSelector,
 } from './ui/ArticleViewSelector';
