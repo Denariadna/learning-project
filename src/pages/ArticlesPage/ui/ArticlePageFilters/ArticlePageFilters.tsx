@@ -10,13 +10,16 @@ import {
     getArticlesPageSort,
     getArticlesPageView,
 } from 'pages/ArticlesPage/model/selectors/articlesPageSelectors';
-import { fetchArticlesList } from 'pages/ArticlesPage/model/services/fetchArticlesList/fetchArticlesList';
+import {
+    fetchArticlesList,
+} from 'pages/ArticlesPage/model/services/fetchArticlesList/fetchArticlesList';
 import { ArticlePageActions } from 'pages/ArticlesPage/model/slices/articlesPageSlice';
 import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useDebounce } from 'shared/lib/hooks/useDebounce/useDebounce';
 import { SortOrder } from 'shared/types';
 import { Card } from 'shared/ui/Card';
 import { Input } from 'shared/ui/Input';
@@ -36,25 +39,32 @@ export const ArticlePageFilters = memo((props: ArticlePageFiltersProps) => {
     const search = useSelector(getArticlesPageSearch);
 
     const fetchData = useCallback(() => {
-        dispatch(fetchArticlesList);
-    }, []);
+        dispatch(fetchArticlesList({
+            replace: true,
+        }));
+    }, [dispatch]);
+    const debounceFetchData = useDebounce(fetchData, 500);
 
     const onViewChange = useCallback((newView: ArticleView) => {
         dispatch(ArticlePageActions.setView(newView));
         dispatch(ArticlePageActions.setPage(1));
-    }, [dispatch]);
+        debounceFetchData();
+    }, [dispatch, debounceFetchData]);
     const onOrderChange = useCallback((sort: SortOrder) => {
         dispatch(ArticlePageActions.setOrder(sort));
         dispatch(ArticlePageActions.setPage(1));
-    }, [dispatch]);
+        debounceFetchData();
+    }, [dispatch, debounceFetchData]);
     const onSortChange = useCallback((order: ArticleSortField) => {
         dispatch(ArticlePageActions.setSort(order));
         dispatch(ArticlePageActions.setPage(1));
-    }, [dispatch]);
+        debounceFetchData();
+    }, [dispatch, debounceFetchData]);
     const onSerachChange = useCallback((search: string) => {
         dispatch(ArticlePageActions.setSearch(search));
         dispatch(ArticlePageActions.setPage(1));
-    }, [dispatch]);
+        debounceFetchData();
+    }, [dispatch, debounceFetchData]);
     return (
         <div className={classNames(cls.ArticlePageFilters, {}, [className])}>
             <div className={cls.sortWrapper}>
