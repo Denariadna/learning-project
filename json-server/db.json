@@ -499,8 +499,8 @@
       "createdAt": "08/10/2026",
       "userId": "1",
       "type": [
-        "IT",
-        "SCIENCE"
+        "SCIENCE",
+        "IT"
       ],
       "blocks": [
         {
@@ -716,7 +716,6 @@
       "createdAt": "12/10/2026",
       "userId": "1",
       "type": [
-        "IT",
         "SCIENCE"
       ],
       "blocks": [

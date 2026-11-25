@@ -5,6 +5,7 @@ export {
     Article,
     ArticleView,
     ArticleSortField,
+    ArticleType,
 } from './model/types/article';
 
 export {

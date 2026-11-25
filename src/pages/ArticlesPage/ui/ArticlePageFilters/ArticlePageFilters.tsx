@@ -4,10 +4,13 @@ import {
     ArticleSortSelector,
     ArticleSortField,
 } from 'entities/Article';
+import { ArticleType } from 'entities/Article/model/types/article';
+import { ArticleTypeTabs } from 'entities/Article/ui/ArticleTypeTabs';
 import {
     getArticlesPageOrder,
     getArticlesPageSearch,
     getArticlesPageSort,
+    getArticlesPageType,
     getArticlesPageView,
 } from 'pages/ArticlesPage/model/selectors/articlesPageSelectors';
 import {
@@ -37,6 +40,7 @@ export const ArticlePageFilters = memo((props: ArticlePageFiltersProps) => {
     const sort = useSelector(getArticlesPageSort);
     const order = useSelector(getArticlesPageOrder);
     const search = useSelector(getArticlesPageSearch);
+    const type = useSelector(getArticlesPageType);
 
     const fetchData = useCallback(() => {
         dispatch(fetchArticlesList({
@@ -65,6 +69,12 @@ export const ArticlePageFilters = memo((props: ArticlePageFiltersProps) => {
         dispatch(ArticlePageActions.setPage(1));
         debounceFetchData();
     }, [dispatch, debounceFetchData]);
+    const onTypeChange = useCallback((type: ArticleType) => {
+        dispatch(ArticlePageActions.setType(type));
+        dispatch(ArticlePageActions.setPage(1));
+        debounceFetchData();
+    }, [dispatch, debounceFetchData]);
+
     return (
         <div className={classNames(cls.ArticlePageFilters, {}, [className])}>
             <div className={cls.sortWrapper}>
@@ -86,6 +96,11 @@ export const ArticlePageFilters = memo((props: ArticlePageFiltersProps) => {
                     onChange={onSerachChange}
                 />
             </Card>
+            <ArticleTypeTabs
+                onChangeType={onTypeChange}
+                value={type}
+                className={cls.tabs}
+            />
         </div>
     );
 });
