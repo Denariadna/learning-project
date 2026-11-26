@@ -1,4 +1,4 @@
-import { ArticleDetail } from 'entities/Article';
+import { ArticleDetail, ArticleList } from 'entities/Article';
 import { CommentList } from 'entities/Comment';
 import { AddCommentForm } from 'features/addCommentForm';
 import { memo, useCallback } from 'react';
@@ -18,6 +18,7 @@ import {
 import { Button } from 'shared/ui/Button/ui/Button';
 import { Page } from 'widgets/Page';
 import { Text } from 'shared/ui/Text';
+import { TextSize } from 'shared/ui/Text/Text';
 import { getArticleCommentsIsLoading } from '../model/selectors/comments';
 import {
     addCommentForArticle,
@@ -30,6 +31,16 @@ import {
     getArticleComments,
 } from '../model/slices/articleDetailCommentsSlice';
 import cls from './ArticleDetailPage.module.scss';
+import {
+    acticleDetailPageRecommendationsReducer, getArticleRecommendations,
+} from '../model/slices/articleDetailPageRecommendationsSlice';
+import {
+    getArticleRecommendationsError,
+    getArticleRecommendationsIsLoading,
+} from '../model/selectors/recommendations';
+import {
+    fetchArticleRecommendations,
+} from '../model/services/fetchArticleRecommendation/fetchArticleRecommendations';
 
 interface ArticleDetailPageProps {
     className?: string;
@@ -37,6 +48,7 @@ interface ArticleDetailPageProps {
 
 const reducerList: ReducersList = {
     articleDetailComments: acticleDetailCommentsReducer,
+    articleRecommendations: acticleDetailPageRecommendationsReducer,
 };
 
 const ArticleDetailPage = memo((props: ArticleDetailPageProps) => {
@@ -44,6 +56,10 @@ const ArticleDetailPage = memo((props: ArticleDetailPageProps) => {
     const { t } = useTranslation('article-detail');
     const { id } = useParams<{id: string}>();
     const comments = useSelector(getArticleComments.selectAll);
+    const recommendations = useSelector(getArticleRecommendations.selectAll);
+    const recommendationsIsLoading = useSelector(getArticleRecommendationsIsLoading);
+    const recommendationError = useSelector(getArticleRecommendationsError);
+
     const isLoading = useSelector(getArticleCommentsIsLoading);
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
@@ -54,6 +70,7 @@ const ArticleDetailPage = memo((props: ArticleDetailPageProps) => {
 
     useInitialEffect(() => {
         dispatch(fetchCommentsByArticleId(id));
+        dispatch(fetchArticleRecommendations());
     });
     const onSendMessage = useCallback((text: string) => {
         dispatch(addCommentForArticle(text));
@@ -76,6 +93,17 @@ const ArticleDetailPage = memo((props: ArticleDetailPageProps) => {
                 </Button>
                 <ArticleDetail id={id} />
                 <Text
+                    size={TextSize.L}
+                    className={cls.commentTitle}
+                    title={t('Рекомендации')}
+                />
+                <ArticleList
+                    articles={recommendations}
+                    isLoading={recommendationsIsLoading}
+                    className={cls.recommendations}
+                />
+                <Text
+                    size={TextSize.L}
                     className={cls.commentTitle}
                     title={t('Комментарии')}
                 />
