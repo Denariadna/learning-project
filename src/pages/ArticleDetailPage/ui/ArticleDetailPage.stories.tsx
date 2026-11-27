@@ -63,8 +63,10 @@ Normal.decorators = [StoreDecorator({
     articleDetail: {
         data: article,
     },
-    articleDetailComments: {
-        ids: [],
-        entities: {},
+    articleDetailsPage: {
+        comments: {
+            ids: [],
+            entities: {},
+        },
     },
 })];

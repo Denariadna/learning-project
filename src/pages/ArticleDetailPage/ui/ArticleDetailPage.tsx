@@ -27,12 +27,11 @@ import {
     fetchCommentsByArticleId,
 } from '../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 import {
-    acticleDetailCommentsReducer,
     getArticleComments,
 } from '../model/slices/articleDetailCommentsSlice';
 import cls from './ArticleDetailPage.module.scss';
 import {
-    acticleDetailPageRecommendationsReducer, getArticleRecommendations,
+    getArticleRecommendations,
 } from '../model/slices/articleDetailPageRecommendationsSlice';
 import {
     getArticleRecommendationsError,
@@ -41,14 +40,14 @@ import {
 import {
     fetchArticleRecommendations,
 } from '../model/services/fetchArticleRecommendation/fetchArticleRecommendations';
+import { articleDetailsPageReducer } from '../model/slices';
 
 interface ArticleDetailPageProps {
     className?: string;
 }
 
 const reducerList: ReducersList = {
-    articleDetailComments: acticleDetailCommentsReducer,
-    articleRecommendations: acticleDetailPageRecommendationsReducer,
+    articleDetailsPage: articleDetailsPageReducer,
 };
 
 const ArticleDetailPage = memo((props: ArticleDetailPageProps) => {
@@ -101,6 +100,8 @@ const ArticleDetailPage = memo((props: ArticleDetailPageProps) => {
                     articles={recommendations}
                     isLoading={recommendationsIsLoading}
                     className={cls.recommendations}
+                    // eslint-disable-next-line i18next/no-literal-string
+                    target="_blank"
                 />
                 <Text
                     size={TextSize.L}

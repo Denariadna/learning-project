@@ -3,3 +3,6 @@ export { ArticleDetailCommentSchema } from './model/types/ArticleDetailCommentSc
 export {
     ArticleDetailRecommendationsSchema,
 } from './model/types/ArticleDetailRecommendationsSchema';
+export {
+    ArticleDetailsPageSchema,
+} from './model/types';

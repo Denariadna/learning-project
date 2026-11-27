@@ -6,13 +6,14 @@ import { profileReducer } from 'entities/Profile';
 import { ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { articleDetailReducer } from 'entities/Article/model/slice/articleDetailSlice';
 import { addCommentFormReducer } from 'features/addCommentForm/model/slices/addCommentSlice';
+import { articleDetailsPageReducer } from 'pages/ArticleDetailPage/model/slices';
 
 const defaultAsyncReducers: ReducersList = {
     loginForm: loginReducer,
     profile: profileReducer,
     articleDetail: articleDetailReducer,
     addCommentForm: addCommentFormReducer,
-    articleDetailComments: articleDetailReducer,
+    articleDetailsPage: articleDetailsPageReducer,
 };
 
 export const StoreDecorator = (
